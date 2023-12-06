@@ -157,8 +157,8 @@ function parseNumberFromString(value) {
  *   3,3,3   => 5.196152422706632
  *   1,2,3   => 3.741657386773941
  */
-function getParallelepipedDiagonal(/* a, b, c */) {
-  // throw new Error('Not implemented');
+function getParallelepipedDiagonal(a, b, c) {
+  return Math.sqrt(a ** 2 + b ** 2 + c ** 2);
 }
 
 /**
@@ -538,8 +538,8 @@ function getIntegerPartNumber(/* number */) {
  * 1, 2, 3       => 6
  * 0.1, 0.2, 0.3 => 0.6
  */
-function getSumOfNumbers(/* x1, x2, x3 */) {
-  // throw new Error('Not implemented');
+function getSumOfNumbers(x1, x2, x3) {
+  return x1 + x2 + x3;
 }
 
 /**
@@ -554,8 +554,11 @@ function getSumOfNumbers(/* x1, x2, x3 */) {
  * -5, -6 => -5
  * 0, 5   => 5
  */
-function getMaxNumber(/* firstNumber, secondNumber */) {
-  // throw new Error('Not implemented');
+function getMaxNumber(firstNumber, secondNumber) {
+  if (firstNumber > secondNumber){
+    return firstNumber;
+  }
+  return secondNumber;
 }
 
 /**
@@ -570,8 +573,8 @@ function getMaxNumber(/* firstNumber, secondNumber */) {
  * -5, 0 => -5 | -4 | -3 | -2 | -1 | 0
  * -1, 1 => -1 | 0 | 1
  */
-function getRandomInteger(/* min, max */) {
-  // throw new Error('Not implemented');
+function getRandomInteger(min, max) {
+  return Math.floor(Math.random() * (max - min) + min);
 }
 
 /**
@@ -584,8 +587,8 @@ function getRandomInteger(/* min, max */) {
  * @example:
  * 3, 4 => 5
  */
-function getHypotenuse(/* a, b */) {
-  // throw new Error('Not implemented');
+function getHypotenuse(a, b) {
+  return Math.sqrt(a ** 2 + b ** 2);
 }
 
 /**
