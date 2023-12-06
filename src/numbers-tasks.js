@@ -19,6 +19,7 @@
  *   5, 5  => 25
  */
 function getRectangleArea(width, height) {
+  // console.log(width*height);
   return width * height;
 }
 
@@ -34,7 +35,7 @@ function getRectangleArea(width, height) {
  *   0    => 0
  */
 function getCircleCircumference(radius) {
-  return 2* Math.PI * radius;
+  return 2 * Math.PI * radius;
 }
 
 /**
@@ -49,8 +50,8 @@ function getCircleCircumference(radius) {
  *  10, 0  => 5
  *  -3, 3  => 0
  */
-function getAverage(/* value1, value2 */) {
-  throw new Error('Not implemented');
+function getAverage(value1, value2) {
+  return value1 / 2 + value2 / 2;
 }
 
 /**
@@ -68,8 +69,9 @@ function getAverage(/* value1, value2 */) {
  *   (0,0) (1,0)    => 1
  *   (-5,0) (10,-10) => 18.027756377319946
  */
-function getDistanceBetweenPoints(/* x1, y1, x2, y2 */) {
-  throw new Error('Not implemented');
+function getDistanceBetweenPoints(x1, y1, x2, y2) {
+  const value = (x2 - x1) ** 2 + (y2 - y1) ** 2;
+  return Math.sqrt(value);
 }
 
 /**
@@ -84,8 +86,9 @@ function getDistanceBetweenPoints(/* x1, y1, x2, y2 */) {
  *   x + 8 = 0       => -8
  *   5*x = 0         => 0
  */
-function getLinearEquationRoot(/* a, b */) {
-  throw new Error('Not implemented');
+function getLinearEquationRoot(a, b) {
+  const x = -b / a;
+  return x;
 }
 
 /**
@@ -106,7 +109,7 @@ function getLinearEquationRoot(/* a, b */) {
  *   (0,1) (0,1)     => 0
  */
 function getAngleBetweenVectors(/* x1, y1, x2, y2 */) {
-  throw new Error('Not implemented');
+  //
 }
 
 /**
@@ -137,8 +140,8 @@ function getLastDigit(value) {
  *     '37'     => 37
  * '-525.5'     => -525.5
  */
-function parseNumberFromString(/* value */) {
-  throw new Error('Not implemented');
+function parseNumberFromString(value) {
+  return Number(value);
 }
 
 /**
@@ -155,7 +158,7 @@ function parseNumberFromString(/* value */) {
  *   1,2,3   => 3.741657386773941
  */
 function getParallelepipedDiagonal(/* a, b, c */) {
-  throw new Error('Not implemented');
+  // throw new Error('Not implemented');
 }
 
 /**
@@ -176,7 +179,7 @@ function getParallelepipedDiagonal(/* a, b, c */) {
  *   1678, 3  => 2000
  */
 function roundToPowerOfTen(/* num, pow */) {
-  throw new Error('Not implemented');
+  // throw new Error('Not implemented');
 }
 
 /**
@@ -197,7 +200,7 @@ function roundToPowerOfTen(/* num, pow */) {
  *   17 => true
  */
 function isPrime(/* n */) {
-  throw new Error('Not implemented');
+  // throw new Error('Not implemented');
 }
 
 /**
@@ -216,7 +219,7 @@ function isPrime(/* n */) {
  *   toNumber(new Number(42), 0) => 42
  */
 function toNumber(/* value, def */) {
-  throw new Error('Not implemented');
+  // throw new Error('Not implemented');
 }
 
 /**
@@ -231,7 +234,7 @@ function toNumber(/* value, def */) {
  *   0  => 0
  */
 function getCube(/* num */) {
-  throw new Error('Not implemented');
+  // throw new Error('Not implemented');
 }
 
 /**
@@ -248,7 +251,7 @@ function getCube(/* num */) {
  *   10 => 55
  */
 function getFibonacciNumber(/* index */) {
-  throw new Error('Not implemented');
+  // throw new Error('Not implemented');
 }
 
 /**
@@ -263,7 +266,7 @@ function getFibonacciNumber(/* index */) {
  *   1  => 1
  */
 function getSumToN(/* n */) {
-  throw new Error('Not implemented');
+  // throw new Error('Not implemented');
 }
 
 /**
@@ -278,7 +281,7 @@ function getSumToN(/* n */) {
  *   5   => 5  // 5
  */
 function getSumOfDigits(/* num */) {
-  throw new Error('Not implemented');
+  // throw new Error('Not implemented');
 }
 
 /**
@@ -293,7 +296,7 @@ function getSumOfDigits(/* num */) {
  *   15  => false
  */
 function isPowerOfTwo(/* num */) {
-  throw new Error('Not implemented');
+  // throw new Error('Not implemented');
 }
 
 /**
@@ -307,7 +310,7 @@ function isPowerOfTwo(/* num */) {
  *   Math.PI / 2 => 1
  */
 function getSine(/* num */) {
-  throw new Error('Not implemented');
+  // throw new Error('Not implemented');
 }
 
 /**
@@ -322,7 +325,7 @@ function getSine(/* num */) {
  * 2, 2    => '10'
  */
 function numberToStringInBase(/* number, base */) {
-  throw new Error('Not implemented');
+  // throw new Error('Not implemented');
 }
 
 /**
@@ -336,7 +339,7 @@ function numberToStringInBase(/* number, base */) {
  * 12345, 2    => '1.23e+4'
  */
 function toExponential(/* number, fractionDigits */) {
-  throw new Error('Not implemented');
+  // throw new Error('Not implemented');
 }
 
 /**
@@ -351,7 +354,7 @@ function toExponential(/* number, fractionDigits */) {
  * 12.345, 1   => '12.3'
  */
 function toFixed(/* number, fractionDigits */) {
-  throw new Error('Not implemented');
+  // throw new Error('Not implemented');
 }
 
 /**
@@ -367,7 +370,7 @@ function toFixed(/* number, fractionDigits */) {
  * 12.345, 4   => '12.35'
  */
 function toPrecision(/* number, precision */) {
-  throw new Error('Not implemented');
+  // throw new Error('Not implemented');
 }
 
 /**
@@ -381,7 +384,7 @@ function toPrecision(/* number, precision */) {
  * Number(-5)    => -5
  */
 function getNumberValue(/* number */) {
-  throw new Error('Not implemented');
+  // throw new Error('Not implemented');
 }
 
 /**
@@ -400,7 +403,7 @@ function getNumberValue(/* number */) {
  * '5'      => false
  */
 function isNumber(/* number */) {
-  throw new Error('Not implemented');
+  // throw new Error('Not implemented');
 }
 
 /**
@@ -415,7 +418,7 @@ function isNumber(/* number */) {
  * '5'  => false
  */
 function isInteger(/* number */) {
-  throw new Error('Not implemented');
+  // throw new Error('Not implemented');
 }
 
 /**
@@ -429,7 +432,7 @@ function isInteger(/* number */) {
  * 'abcdefgh'      => NaN
  */
 function getFloatOnString(/* str */) {
-  throw new Error('Not implemented');
+  // throw new Error('Not implemented');
 }
 
 /**
@@ -447,7 +450,7 @@ function getFloatOnString(/* str */) {
  * '10', 8              => 8
  */
 function getIntegerOnString(/* str, base */) {
-  throw new Error('Not implemented');
+  // throw new Error('Not implemented');
 }
 
 /**
@@ -462,7 +465,7 @@ function getIntegerOnString(/* str, base */) {
  * 2 ** 53  => false
  */
 function isSafeInteger(/* number */) {
-  throw new Error('Not implemented');
+  // throw new Error('Not implemented');
 }
 
 /**
@@ -476,7 +479,7 @@ function isSafeInteger(/* number */) {
  * -5.1 => -6
  */
 function roundToSmallestInteger(/* number */) {
-  throw new Error('Not implemented');
+  // throw new Error('Not implemented');
 }
 
 /**
@@ -490,7 +493,7 @@ function roundToSmallestInteger(/* number */) {
  * -5.9 => -5
  */
 function roundToLargestInteger(/* number */) {
-  throw new Error('Not implemented');
+  // throw new Error('Not implemented');
 }
 
 /**
@@ -505,7 +508,7 @@ function roundToLargestInteger(/* number */) {
  * -5.5 => -5
  */
 function roundToNearestInteger(/* number */) {
-  throw new Error('Not implemented');
+  // throw new Error('Not implemented');
 }
 
 /**
@@ -520,7 +523,7 @@ function roundToNearestInteger(/* number */) {
  * -5.5 => -5
  */
 function getIntegerPartNumber(/* number */) {
-  throw new Error('Not implemented');
+  // throw new Error('Not implemented');
 }
 
 /**
@@ -536,7 +539,7 @@ function getIntegerPartNumber(/* number */) {
  * 0.1, 0.2, 0.3 => 0.6
  */
 function getSumOfNumbers(/* x1, x2, x3 */) {
-  throw new Error('Not implemented');
+  // throw new Error('Not implemented');
 }
 
 /**
@@ -552,7 +555,7 @@ function getSumOfNumbers(/* x1, x2, x3 */) {
  * 0, 5   => 5
  */
 function getMaxNumber(/* firstNumber, secondNumber */) {
-  throw new Error('Not implemented');
+  // throw new Error('Not implemented');
 }
 
 /**
@@ -568,7 +571,7 @@ function getMaxNumber(/* firstNumber, secondNumber */) {
  * -1, 1 => -1 | 0 | 1
  */
 function getRandomInteger(/* min, max */) {
-  throw new Error('Not implemented');
+  // throw new Error('Not implemented');
 }
 
 /**
@@ -582,7 +585,7 @@ function getRandomInteger(/* min, max */) {
  * 3, 4 => 5
  */
 function getHypotenuse(/* a, b */) {
-  throw new Error('Not implemented');
+  // throw new Error('Not implemented');
 }
 
 /**
@@ -599,7 +602,7 @@ function getHypotenuse(/* a, b */) {
  * 15 => 8
  */
 function getCountOfOddNumbers(/* number */) {
-  throw new Error('Not implemented');
+  // throw new Error('Not implemented');
 }
 
 module.exports = {
