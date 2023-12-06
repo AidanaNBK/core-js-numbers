@@ -199,8 +199,13 @@ function roundToPowerOfTen(/* num, pow */) {
  *   16 => false
  *   17 => true
  */
-function isPrime(/* n */) {
-  // throw new Error('Not implemented');
+function isPrime(n) {
+  for (let i = 2; i < n; i += 1) {
+    if (n % i === 0) {
+      return false;
+    }
+  }
+  return true;
 }
 
 /**
@@ -218,8 +223,11 @@ function isPrime(/* n */) {
  *   toNumber(42, 0) => 42
  *   toNumber(new Number(42), 0) => 42
  */
-function toNumber(/* value, def */) {
-  // throw new Error('Not implemented');
+function toNumber(value, def) {
+  if (Number(value)) {
+    return Number(value);
+  }
+  return def;
 }
 
 /**
@@ -233,8 +241,8 @@ function toNumber(/* value, def */) {
  *   -2 => -8
  *   0  => 0
  */
-function getCube(/* num */) {
-  // throw new Error('Not implemented');
+function getCube(num) {
+  return num ** 3;
 }
 
 /**
@@ -250,8 +258,11 @@ function getCube(/* num */) {
  *   3  => 2
  *   10 => 55
  */
-function getFibonacciNumber(/* index */) {
-  // throw new Error('Not implemented');
+function getFibonacciNumber(index) {
+  if (index === 0 || index === 1) {
+    return index;
+  }
+  return getFibonacciNumber(index - 2) + getFibonacciNumber(index - 1);
 }
 
 /**
@@ -265,8 +276,12 @@ function getFibonacciNumber(/* index */) {
  *   10 => 55 // (1+2+3+...+10)
  *   1  => 1
  */
-function getSumToN(/* n */) {
-  // throw new Error('Not implemented');
+function getSumToN(n) {
+  let res = 0;
+  for (let i = 1; i <= n; i += 1) {
+    res += i;
+  }
+  return res;
 }
 
 /**
@@ -280,8 +295,14 @@ function getSumToN(/* n */) {
  *   202 => 4  // (2+0+2)
  *   5   => 5  // 5
  */
-function getSumOfDigits(/* num */) {
-  // throw new Error('Not implemented');
+function getSumOfDigits(num) {
+  let res = 0;
+  let n = num;
+  for (; n > 0; ) {
+    res += n % 10;
+    n /= 10;
+  }
+  return Math.floor(res);
 }
 
 /**
@@ -402,8 +423,11 @@ function getNumberValue(/* number */) {
  * 5        => true
  * '5'      => false
  */
-function isNumber(/* number */) {
-  // throw new Error('Not implemented');
+function isNumber(number) {
+  if (typeof number === 'number') {
+    return true;
+  }
+  return false;
 }
 
 /**
@@ -507,8 +531,8 @@ function roundToLargestInteger(/* number */) {
  * 5.4  => 5
  * -5.5 => -5
  */
-function roundToNearestInteger(/* number */) {
-  // throw new Error('Not implemented');
+function roundToNearestInteger(number) {
+  return Math.round(number);
 }
 
 /**
@@ -555,10 +579,7 @@ function getSumOfNumbers(x1, x2, x3) {
  * 0, 5   => 5
  */
 function getMaxNumber(firstNumber, secondNumber) {
-  if (firstNumber > secondNumber){
-    return firstNumber;
-  }
-  return secondNumber;
+  return Math.max(firstNumber, secondNumber);
 }
 
 /**
@@ -587,8 +608,10 @@ function getRandomInteger(min, max) {
  * @example:
  * 3, 4 => 5
  */
-function getHypotenuse(a, b) {
-  return Math.sqrt(a ** 2 + b ** 2);
+function getHypotenuse(/* a, b */) {
+  // const x = BigInt(a) ** 2;
+  // const y = BigInt(b) ** 2;
+  // return Math.sqrt(x + y);
 }
 
 /**
@@ -604,8 +627,8 @@ function getHypotenuse(a, b) {
  * 10 => 5
  * 15 => 8
  */
-function getCountOfOddNumbers(/* number */) {
-  // throw new Error('Not implemented');
+function getCountOfOddNumbers(number) {
+  return Math.ceil((number + 1) / 2);
 }
 
 module.exports = {
