@@ -316,8 +316,19 @@ function getSumOfDigits(num) {
  *   16  => true
  *   15  => false
  */
-function isPowerOfTwo(/* num */) {
-  // throw new Error('Not implemented');
+function isPowerOfTwo(num) {
+  let n = num;
+  for (; n > 0; ) {
+    if (n === 1) {
+      return true;
+    }
+    if (n % 2 === 0) {
+      n /= 2;
+    } else {
+      return false;
+    }
+  }
+  return false;
 }
 
 /**
@@ -330,8 +341,8 @@ function isPowerOfTwo(/* num */) {
  *   0 => 0
  *   Math.PI / 2 => 1
  */
-function getSine(/* num */) {
-  // throw new Error('Not implemented');
+function getSine(num) {
+  return Math.sin(num);
 }
 
 /**
@@ -424,10 +435,11 @@ function getNumberValue(/* number */) {
  * '5'      => false
  */
 function isNumber(number) {
-  if (typeof number === 'number') {
-    return true;
+  let res = typeof number === 'number';
+  if (number === Infinity) {
+    res = false;
   }
-  return false;
+  return res;
 }
 
 /**
@@ -608,10 +620,8 @@ function getRandomInteger(min, max) {
  * @example:
  * 3, 4 => 5
  */
-function getHypotenuse(/* a, b */) {
-  // const x = BigInt(a) ** 2;
-  // const y = BigInt(b) ** 2;
-  // return Math.sqrt(x + y);
+function getHypotenuse(a, b) {
+  return (a ** 2 + b ** 2) ** (1 / 2);
 }
 
 /**
@@ -628,7 +638,10 @@ function getHypotenuse(/* a, b */) {
  * 15 => 8
  */
 function getCountOfOddNumbers(number) {
-  return Math.ceil((number + 1) / 2);
+  let res = 0;
+  res = number < 0 ? -number : number;
+  res = res % 2 === 0 ? res : res + 1;
+  return res / 2;
 }
 
 module.exports = {
