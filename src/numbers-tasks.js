@@ -411,8 +411,8 @@ function numberToStringInBase(number, base) {
  * @example:
  * 12345, 2    => '1.23e+4'
  */
-function toExponential(/* number, fractionDigits */) {
-  // throw new Error('Not implemented');
+function toExponential(number, fractionDigits) {
+  return number.toExponential(fractionDigits);
 }
 
 /**
@@ -426,8 +426,8 @@ function toExponential(/* number, fractionDigits */) {
  * 12345, 2    => '12345.00'
  * 12.345, 1   => '12.3'
  */
-function toFixed(/* number, fractionDigits */) {
-  // throw new Error('Not implemented');
+function toFixed(number, fractionDigits) {
+  return number.toFixed(fractionDigits);
 }
 
 /**
@@ -442,8 +442,8 @@ function toFixed(/* number, fractionDigits */) {
  * 12345, 7    => '12345.00'
  * 12.345, 4   => '12.35'
  */
-function toPrecision(/* number, precision */) {
-  // throw new Error('Not implemented');
+function toPrecision(number, precision) {
+  return number.toPrecision(precision);
 }
 
 /**
@@ -456,8 +456,8 @@ function toPrecision(/* number, precision */) {
  * new Number(5) => 5
  * Number(-5)    => -5
  */
-function getNumberValue(/* number */) {
-  // throw new Error('Not implemented');
+function getNumberValue(number) {
+  return Number(number);
 }
 
 /**
@@ -476,15 +476,10 @@ function getNumberValue(/* number */) {
  * '5'      => false
  */
 function isNumber(number) {
-  // let res = typeof number === 'number';
-  // if (number === Infinity) {
-  //   res = false;
-  // }
-  // return res;
-  if (Number.isNumber(number)) {
-    return true;
+  if (number === Infinity) {
+    return false;
   }
-  return false;
+  return number === +number;
 }
 
 /**
@@ -520,12 +515,13 @@ function isInteger(number) {
  * 'abcdefgh'      => NaN
  */
 function getFloatOnString(str) {
-  for (let i = 0; i < str.length; i += 1) {
-    if (Number(str.substring(i))) {
-      return Number(str.substring(i));
+  let max;
+  for (let i = 0; i <= str.length; i += 1) {
+    if (+str.substring(0, i)) {
+      max = +str.substring(0, i);
     }
   }
-  return NaN;
+  return +max;
 }
 
 /**
@@ -542,8 +538,18 @@ function getFloatOnString(str) {
  * '1.234', 2           => 1
  * '10', 8              => 8
  */
-function getIntegerOnString(/* str, base */) {
-  // throw new Error('Not implemented');
+function getIntegerOnString(str, base) {
+  let temp = getFloatOnString(str);
+  if (Number.isNaN(temp)) {
+    return NaN;
+  }
+  temp = Math.floor(temp);
+  let res = 0;
+  for (let i = 0; temp > 0; i += 1) {
+    res += (temp % 10) * base ** i;
+    temp = (temp - (temp % 10)) / 10;
+  }
+  return res;
 }
 
 /**
@@ -618,8 +624,11 @@ function roundToNearestInteger(number) {
  * 5.4  => 5
  * -5.5 => -5
  */
-function getIntegerPartNumber(/* number */) {
-  // throw new Error('Not implemented');
+function getIntegerPartNumber(number) {
+  if (number < 0) {
+    return Math.ceil(number);
+  }
+  return Math.floor(number);
 }
 
 /**
@@ -635,7 +644,8 @@ function getIntegerPartNumber(/* number */) {
  * 0.1, 0.2, 0.3 => 0.6
  */
 function getSumOfNumbers(x1, x2, x3) {
-  return x1 + x2 + x3;
+  const res = x1 + x2 + x3;
+  return Math.round(res * 10) / 10;
 }
 
 /**
