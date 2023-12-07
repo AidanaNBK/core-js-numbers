@@ -476,10 +476,7 @@ function getNumberValue(number) {
  * '5'      => false
  */
 function isNumber(number) {
-  if (number === Infinity) {
-    return false;
-  }
-  return number === +number;
+  return number === +number && Number.isFinite(number);
 }
 
 /**
