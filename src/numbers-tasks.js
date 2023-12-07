@@ -108,8 +108,13 @@ function getLinearEquationRoot(a, b) {
  *   (0,-1) (1,0)    => π/2
  *   (0,1) (0,1)     => 0
  */
-function getAngleBetweenVectors(/* x1, y1, x2, y2 */) {
-  //
+function getAngleBetweenVectors(x1, y1, x2, y2) {
+  const a = Math.sqrt(y1 ** 2 + x1 ** 2);
+  const b = Math.sqrt(y2 ** 2 + x2 ** 2);
+  return Math.acos(
+    (y1 ** 2 + x1 ** 2 + y2 ** 2 + x2 ** 2 - (y1 - y2) ** 2 - (x1 - x2) ** 2) /
+      (2 * a * b)
+  );
 }
 
 /**
@@ -178,8 +183,16 @@ function getParallelepipedDiagonal(a, b, c) {
  *   1678, 2  => 1700
  *   1678, 3  => 2000
  */
-function roundToPowerOfTen(/* num, pow */) {
-  // throw new Error('Not implemented');
+function roundToPowerOfTen(num, pow) {
+  if (pow === 0) {
+    return num;
+  }
+  let ten = 1;
+  for (let i = 0; i < pow; i += 1) {
+    ten *= 10;
+  }
+  const res = Math.round(num / ten);
+  return res * ten;
 }
 
 /**
@@ -356,8 +369,36 @@ function getSine(num) {
  * 255, 16 => 'ff'
  * 2, 2    => '10'
  */
-function numberToStringInBase(/* number, base */) {
-  // throw new Error('Not implemented');
+function numberToStringInBase(number, base) {
+  const letterBase = [
+    '0',
+    '1',
+    '2',
+    '3',
+    '4',
+    '5',
+    '6',
+    '7',
+    '8',
+    '9',
+    'a',
+    'b',
+    'c',
+    'd',
+    'e',
+    'f',
+  ];
+  let res = '';
+  let n;
+  n = number < 0 ? -number : number;
+  for (; n > 0; ) {
+    res = letterBase[n % base] + res;
+    n = Math.floor(n / base);
+  }
+  if (number < 0) {
+    return '-'.concat(res);
+  }
+  return res;
 }
 
 /**
@@ -435,11 +476,15 @@ function getNumberValue(/* number */) {
  * '5'      => false
  */
 function isNumber(number) {
-  let res = typeof number === 'number';
-  if (number === Infinity) {
-    res = false;
+  // let res = typeof number === 'number';
+  // if (number === Infinity) {
+  //   res = false;
+  // }
+  // return res;
+  if (Number.isNumber(number)) {
+    return true;
   }
-  return res;
+  return false;
 }
 
 /**
@@ -453,8 +498,15 @@ function isNumber(number) {
  * 5.1  => false
  * '5'  => false
  */
-function isInteger(/* number */) {
-  // throw new Error('Not implemented');
+function isInteger(number) {
+  if (typeof number !== 'number') {
+    return false;
+  }
+  const n = number * 10;
+  if (n % 10 !== 0) {
+    return false;
+  }
+  return true;
 }
 
 /**
@@ -467,8 +519,13 @@ function isInteger(/* number */) {
  * '4.567abcdefgh' => 4.567
  * 'abcdefgh'      => NaN
  */
-function getFloatOnString(/* str */) {
-  // throw new Error('Not implemented');
+function getFloatOnString(str) {
+  for (let i = 0; i < str.length; i += 1) {
+    if (Number(str.substring(i))) {
+      return Number(str.substring(i));
+    }
+  }
+  return NaN;
 }
 
 /**
@@ -500,8 +557,11 @@ function getIntegerOnString(/* str, base */) {
  * 3.5      => false
  * 2 ** 53  => false
  */
-function isSafeInteger(/* number */) {
-  // throw new Error('Not implemented');
+function isSafeInteger(number) {
+  if (Number.isSafeInteger(number)) {
+    return true;
+  }
+  return false;
 }
 
 /**
@@ -514,8 +574,8 @@ function isSafeInteger(/* number */) {
  * 5.9  => 5
  * -5.1 => -6
  */
-function roundToSmallestInteger(/* number */) {
-  // throw new Error('Not implemented');
+function roundToSmallestInteger(number) {
+  return Math.floor(number);
 }
 
 /**
@@ -528,8 +588,8 @@ function roundToSmallestInteger(/* number */) {
  * 5.1  => 6
  * -5.9 => -5
  */
-function roundToLargestInteger(/* number */) {
-  // throw new Error('Not implemented');
+function roundToLargestInteger(number) {
+  return Math.ceil(number);
 }
 
 /**
@@ -621,7 +681,11 @@ function getRandomInteger(min, max) {
  * 3, 4 => 5
  */
 function getHypotenuse(a, b) {
-  return (a ** 2 + b ** 2) ** (1 / 2);
+  const res = Math.sqrt(a ** 2 + b ** 2);
+  if (res === Infinity) {
+    return 1.7976931348623157e308;
+  }
+  return res;
 }
 
 /**
