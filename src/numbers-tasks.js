@@ -437,7 +437,8 @@ function toPrecision(number, precision) {
  * Number(-5)    => -5
  */
 function getNumberValue(number) {
-  return +number;
+  // return +number;
+  return Number(number).valueOf();
 }
 
 /**
