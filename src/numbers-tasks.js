@@ -370,35 +370,15 @@ function getSine(num) {
  * 2, 2    => '10'
  */
 function numberToStringInBase(number, base) {
-  const letterBase = [
-    '0',
-    '1',
-    '2',
-    '3',
-    '4',
-    '5',
-    '6',
-    '7',
-    '8',
-    '9',
-    'a',
-    'b',
-    'c',
-    'd',
-    'e',
-    'f',
-  ];
-  let res = '';
-  let n;
-  n = number < 0 ? -number : number;
-  for (; n > 0; ) {
-    res = letterBase[n % base] + res;
-    n = Math.floor(n / base);
-  }
-  if (number < 0) {
-    return '-'.concat(res);
-  }
-  return res;
+  return number.toString(base);
+  // const letterBase = '0123456789abcdef';
+  // let res = '';
+  // let n = Math.abs(number);
+  // while (n > 0) {
+  //   res = letterBase[n % base] + res;
+  //   n = Math.floor(n / base);
+  // }
+  // return number < 0 ? '-'.concat(res) : res;
 }
 
 /**
@@ -457,7 +437,7 @@ function toPrecision(number, precision) {
  * Number(-5)    => -5
  */
 function getNumberValue(number) {
-  return Number(number);
+  return +number;
 }
 
 /**
@@ -491,14 +471,15 @@ function isNumber(number) {
  * '5'  => false
  */
 function isInteger(number) {
-  if (typeof number !== 'number') {
-    return false;
-  }
-  const n = number * 10;
-  if (n % 10 !== 0) {
-    return false;
-  }
-  return true;
+  // if (typeof number !== 'number') {
+  //   return false;
+  // }
+  // const n = number * 10;
+  // if (n % 10 !== 0) {
+  //   return false;
+  // }
+  // return true;
+  return Number.isInteger(number);
 }
 
 /**
@@ -512,13 +493,15 @@ function isInteger(number) {
  * 'abcdefgh'      => NaN
  */
 function getFloatOnString(str) {
-  let max;
-  for (let i = 0; i <= str.length; i += 1) {
-    if (+str.substring(0, i)) {
-      max = +str.substring(0, i);
-    }
-  }
-  return +max;
+  // let max;
+  // for (let i = 0; i <= str.length; i += 1) {
+  //   if (+str.substring(0, i)) {
+  //     max = +str.substring(0, i);
+  //   }
+  // }
+  // return +max;
+  const res = Number.parseFloat(str);
+  return res;
 }
 
 /**
@@ -536,16 +519,18 @@ function getFloatOnString(str) {
  * '10', 8              => 8
  */
 function getIntegerOnString(str, base) {
-  let temp = getFloatOnString(str);
-  if (Number.isNaN(temp)) {
-    return NaN;
-  }
-  temp = Math.floor(temp);
-  let res = 0;
-  for (let i = 0; temp > 0; i += 1) {
-    res += (temp % 10) * base ** i;
-    temp = (temp - (temp % 10)) / 10;
-  }
+  // const temp = Math.floor(Number.parseFloat(str));
+  // if (Number.isNaN(temp)) {
+  //   return NaN;
+  // }
+  // temp = Math.floor(temp);
+  // let res = 0;
+  // for (let i = 0; temp > 0; i += 1) {
+  //   res += (temp % 10) * base ** i;
+  //   temp = (temp - (temp % 10)) / 10;
+  // }
+  // return res;
+  const res = Number.parseInt(str, base);
   return res;
 }
 
@@ -622,10 +607,12 @@ function roundToNearestInteger(number) {
  * -5.5 => -5
  */
 function getIntegerPartNumber(number) {
-  if (number < 0) {
-    return Math.ceil(number);
-  }
-  return Math.floor(number);
+  // if (number < 0) {
+  //   return Math.ceil(number);
+  // }
+  // return Math.floor(number);
+  const res = Math.trunc(number);
+  return res;
 }
 
 /**
@@ -688,7 +675,12 @@ function getRandomInteger(min, max) {
  * 3, 4 => 5
  */
 function getHypotenuse(a, b) {
-  const res = Math.sqrt(a ** 2 + b ** 2);
+  // const res = Math.sqrt(a ** 2 + b ** 2);
+  // if (res === Infinity) {
+  //   return 1.7976931348623157e308;
+  // }
+  // return res;
+  const res = Math.hypot(a, b);
   if (res === Infinity) {
     return 1.7976931348623157e308;
   }
